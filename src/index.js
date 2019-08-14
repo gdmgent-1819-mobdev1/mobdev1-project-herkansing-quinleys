@@ -30,3 +30,9 @@ router.resolve();
 window.onload = () => {
   router.navigate(window.location.hash.split('/')[1]);
 };
+
+router
+  .on('/detail/:id', function (params, query) {
+    params.id;
+  })
+  .resolve();

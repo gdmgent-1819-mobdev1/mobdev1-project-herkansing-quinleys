@@ -1,11 +1,32 @@
-{{> header }}
-<div class="page home">
-  <h1>Hello, {{user}}!</h1>
-  <div class="body">
-    This is Home page.<br>
-    Go to <a href="/about" data-navigo>About page</a><br />
-    Go to <a href="/firebase" data-navigo>Firebase example page</a><br />
-    Go to <a href="/mapbox" data-navigo>Mapbox example page</a><br />
-  </div>
+<div class="image">
+
+      <img class="headerimg"src="../../src/public/img/kot.jpg" alt="" />
+      
+      <h2>Ontdek de beste manier om te zoeken naar jouw kot!</h2>
+      <a href="#/signup" class="imgbtn"><button class="waves-effect waves-light btn">Sign up</button></a>
 </div>
+  <div class="body">
+    <div class="container">
+        <div class="row textrow">
+          <div>
+      <h3>Play the tinder game now!</h3>
+      <h6>Sign up and experience the new fun way to find your new student dorm!</h6>
+      <a href="#/login" ><button id="signup" href="#/signup" class="signup waves-effect waves-light btn">Sign Up</button></a>
+      <a href="#/tinder" ><button id="tinder" href="#/tinder" class="tinder waves-effect waves-light btn">Play Tinder</button></a>
+    </div>
+    </div>
+      <div class="row">
+        <h3>Popular</h3>
+        <div class="recKots" id="recKots"></div>
+      </div>
+  <div class="row textrow">
+    <div>
+      <h3>Kotbaas of Student?</h3>
+      <h6>Kotbaas of student? Maakt niet uit! Versnel je zoektocht naar een kot en het verhuren van je kot!</h6>
+      <a href="#/login" ><button id="login" class="signup waves-effect waves-light btn">Log in</button></a>
+      <a href="#/signup"><button id="signup" href="#/signup" class="tinder waves-effect waves-light btn">Sign up</button></a>
+    </div>
+    </div>
+</div>
+  </div>
 {{> footer }}

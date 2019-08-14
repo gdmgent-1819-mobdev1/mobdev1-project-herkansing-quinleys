@@ -1,0 +1,50 @@
+
+<div class="list">
+  <div class="container">
+  <div class="body">
+      <form>
+        <div class="input-field col s6">
+        <label for="searcch-koten">Search:</label>   
+          <input id="search-koten" type="text" class="validate"></input>
+        </div>
+      </form>
+      <a class="waves-effect waves-light btn openfilterbtn" id="openfilterbtn">Open Filters</a>
+      <div id="filters" style="display: none">
+      <form class="col s12">
+        <label>filter</label>
+        <p>
+          <label>
+            <input id="filterAll" class="with-gap" name="group3" type="radio" value="all" checked />
+            <span>All</span>
+          </label>
+          <label>
+            <input id="filterKamer" class="with-gap" name="group3" type="radio" value="kamer" />
+            <span>Kamer</span>
+          </label>
+          <label>
+            <input id="filterStudio" class="with-gap" name="group3" type="radio" value="studio" />
+            <span>Studio</span>
+          </label>
+        </p>
+          <label>Huurprijs:</label>
+            <div class="input-field col s6">
+            <input id="huurprijsMin" type="number" class="validate">
+            <label for="huurprijsMin">min</label>
+          </div>
+          <div class="input-field col s6">
+            <input id="huurprijsMax" type="number" class="validate">
+            <label for="huurprijsMax">max</label>
+          </div>
+
+        <a class="waves-effect waves-light btn filterbtn" id="filterbtn">Filter</a>
+      </form>
+      <a class="waves-effect waves-light btn closefilterbtn" id="closefilterbtn">Close Filters</a>
+      </div>
+      <h1>Alle koten</h1>
+      
+    <ul id="koten"></ul>
+    <ul id="addedkoten"></ul>
+    </div>
+  </div>
+</div>
+{{> footer }}

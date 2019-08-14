@@ -11,27 +11,22 @@ const firebase = getInstance();
 const aboutTemplate = require('../templates/list.handlebars');
 
 export default () => {
-  // Data to be passed to the template
-  let loading = true;
-  let posts = {};
-  const title = 'Firebase calls example';
-  // Return the compiled template to the router
-  update(compile(aboutTemplate)({ title, loading, posts }));
+      
+      if (firebase) {
+      const email="test20@example.com";
+      const password="password";
+      
+      //Create User with Email and Password
+      firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+        // Handle Errors here.
+        let errorCode = error.code;
+        let errorMessage = error.message;
+        console.log(errorCode);
+        console.log(errorMessage);
+      });
+  
 
-  if (firebase) {
-    // firebase.auth().createUserWithEmailAndPassword('test@test.com', 'test333').catch((error) => {
-    //   // Handle Errors here.
-    //   const errorCode = error.code;
-    //   const errorMessage = error.message;
-    //   console.log(errorCode,errorMessage);
-    // });
-    
-    const database = firebase.database().ref('/posts');
-    database.on('value', (snapshot) => {
-      posts = snapshot.val();
-      loading = false;
-      // Run the update helper to update the template
-      update(compile(aboutTemplate)({ title, loading, posts }));
-    });
-  }
+
+      update(compile(aboutTemplate)());
+  };
 };

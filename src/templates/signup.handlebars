@@ -1,0 +1,36 @@
+<div class="container">
+<div class="page home">
+  <div class="body sign-up">
+<h1>Nieuw account</h1>
+        <form class="create" id="create">
+            <label>Gebruikersnaam</label>
+            <input type="text" class="usernameform">
+            <label for="email">Email adress</label>
+            <input type="email" class="emailform" id="emailform">
+            <label>Password</label>
+            <input type="password" class="passwordform">
+            <label>Telefoon</label>
+            <input type="tel" class="telform">
+            <label>Wat ben je?</label>
+            <select  name="typeform" class="typeform select" form="create">
+                <option value="">Wat ben je?</option>
+                <option value="Student">Student</option>
+                <option value="Kotbaas">Kotbaas</option>
+            </select>
+            <div id="onlystudent">
+            <label>Kies je school</label>
+            <select  class="schoolform select" name="school" form="create">
+                <option value="UniGent">Universiteit Gent</option>
+                <option value="HoGent">Hogeschool Gent</option>
+                <option value="Artevelde">Artevelde Hogeschool</option>
+                <option value="KuL">KU Leuven</option>
+                <option value="Odisee">Odisee</option>
+                <option value="LUCA">LUCA School of Arts</option>
+            </select>
+            </div>
+            <button class="createbutton waves-effect waves-light btn" id="createbutton">Maak account aan!</button>
+        </form>
+ </div>
+ </div>
+ </div>
+{{>footer}}

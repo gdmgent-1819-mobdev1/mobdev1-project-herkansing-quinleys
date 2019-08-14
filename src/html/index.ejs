@@ -14,9 +14,101 @@
     <meta property="og:description" content="We educate future talents in Design for Print and Non-Print, Web- and App Development, Audio and Video Production, 2D- 3D Animations, Printing and Packaging and the whole Management of those Workflows.">
     <meta property="og:url" content="http://www.gdm.gent/">
     <meta property="og:site_name" content="Mobile Development I">
+    <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-app.js"></script>
+     <!-- Compiled and minified CSS -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <!-- Compiled and minified JavaScript -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+     <script src="../pages/navigation.js"></script>
    </head>
   <body>
+      <section class="header">
+          <nav>
+            <div class="nav-wrapper">
+              <a href="/" class="brand-logo" data-navigo>srch.</a>
+              <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+              <ul id="nav-mobile" class="right hide-on-med-and-down">
+                            
+                        <li class="logged-out">
+                            <a href="#/login" data-navigo>login</a>
+                        </li>
+                        <li class="logged-out">
+                            <a href="#/signup" data-navigo>sign up</a>
+                        </li>
+                        <li class="logged-in logged-out">
+                            <a href="#/koten" data-navigo>koten</a>
+                        </li>
+                        <li class="logged-in">
+                            <a href="#/profile" id="profile" data-navigo>profile</a>
+                        </li>
+                         <li class="logged-in">
+                            <a href="#/tinder"  data-navigo>tinder</a>
+                        </li>
+                        <li class="logged-in">
+                            <a href="#/like" data-navigo>Favorites</a>
+                        </li>
+                        <li class="logged-in">
+                            <a href="#/addKot" data-navigo>Add Kot</a>
+                        </li>
+                        <li class="logged-in">
+                            <a href="#" data-navigo id="logout1">Log out</a>
+                        </li>
+              </ul>
+            </div>
+          </nav>
+            <ul class="sidenav" id="mobile-demo">
+                <li><div class="user-view logged-in">
+                    <a href="#user"><img class="circle " src='../src/public/img/bronbron.jpeg'></a>
+                    <a href="#name"><span class="black-text name " id="username"></span></a>
+                    <a href="#email"><span class="black-text email " id="useremail"></span></a>
+                  </div></li>
+                    <li class="logged-out">
+                        <a class="waves-effect" href="#/login" data-navigo>login</a>
+                    </li>
+                    <li class="logged-out">
+                        <a class="waves-effect" href="#/signup" data-navigo>sign up</a>
+                    </li>
+                    <li><div class="divider"></div></li>
+                    <li><a class="subheader">Search</a></li>
+                    <li class="">
+                        <a href="#/koten" class="waves-effect" data-navigo>Alle koten</a>
+                    </li>
+                    <li class="logged-in">
+                        <a href="#/tinder" class="waves-effect"  data-navigo>tinder</a>
+                    </li>
+                    <li><div class="divider logged-in"></div></li>
+                    <li><a class="subheader logged-in">Profiel</a></li>
+                    <li class="logged-in">
+                        <a href="#/profile" class="waves-effect" id="profile" data-navigo>Profiel</a>
+                    </li>
+                    <li class="logged-in">
+                        <a href="#/like" class="waves-effect" data-navigo>Favorieten</a>
+                    </li>
+                    <li class="logged-in">
+                        <a href="#/chat" class="waves-effect" data-navigo>Chats</a>
+                    </li>
+                    <li class="logged-in">
+                        <a href="#/addKot" class="waves-effect" id="addkot" data-navigo>Voeg Kot toe</a>
+                    </li>
+                    <li class="logged-in">
+                        <a href="#" data-navigo class="waves-effect" id="logout">Log out</a>
+                    </li>
+            </ul>
+        
+        </section>
     <div id="app">
+            <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+      <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-app.js"></script>
+
+      <!-- Add Firebase products that you want to use -->
+      <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-auth.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-firestore.js"></script>
+            <script src="https://js.api.here.com/v3/3.1/mapsjs-core.js"
+        type="text/javascript" charset="utf-8"></script>
+      <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js"
+        type="text/javascript" charset="utf-8"></script>
     </div>
+    
   </body>
 </html>

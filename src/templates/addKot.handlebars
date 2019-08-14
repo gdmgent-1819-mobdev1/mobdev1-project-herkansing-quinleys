@@ -1,0 +1,85 @@
+
+    <div class="body">
+        <h1>Add Kot</h1>
+        <form class="create">
+            <label>Naam</label>
+            <input type="text" class="name">
+            <label>Huurprijs</label>
+            <input type="number" class="huurprijs">
+            <label>Telefoonnummer</label>
+            <input type="number" class="telefoon">
+            <label>Waarborg</label>
+            <input type="text" class="waarborg">
+            <label>Straat</label>
+            <input type="text" class="straat">
+            <label>Stad</label>
+            <input type="text" class="stad">
+            <label>PostCode</label>
+            <input type="number" class="postcode">
+            <label>Oppervlakte</label>
+            <input type="number" class="oppervlakte">
+            <label>Verdieping</label>
+            <input type="number" class="verdieping">
+            <label>Type</label>
+            <select class="browser-default type">
+                <option value="" disabled selected>Choose your option</option>
+                <option value="kamer">Kamer</option>
+                <option value="studio">Studio</option>
+                <option value="anders">Anders</option>
+            </select>
+            <label>Aantal Personen</label>
+            <select class="browser-default aantalpersonen">
+                <option value="" disabled selected>Choose your option</option>
+                <option value="1-2">1-2</option>
+                <option value="3-4">3-4</option>
+                <option value="meer dan 5">meer dan 5</option>
+            </select>
+            <label>Toilet</label>
+            <select class="browser-default toilet">
+                <option value="" disabled selected>Choose your option</option>
+                <option value="prive">Prive</option>
+                <option value="gedeeld">Gedeeld</option>
+                <option value="niet aanwezig">Niet aanwezig</option>
+            </select>
+                
+            <label>Douche</label>
+            <select class="browser-default douche">
+                <option value="" disabled selected>Choose your option</option>
+                <option value="prive">Prive</option>
+                <option value="gedeeld">Gedeeld</option>
+                <option value="niet aanwezig">Niet aanwezig</option>
+            </select>
+
+                <label>Bad</label>
+            <select class="browser-default bad">
+                <option value="" disabled selected>Choose your option</option>
+                <option value="prive">Prive</option>
+                <option value="gedeeld">Gedeeld</option>
+                <option value="niet aanwezig">Niet aanwezig</option>
+                </select>
+
+            <label>Keuken</label>
+            <select class="browser-default keuken">
+                <option value="" disabled selected>Choose your option</option>
+                <option value="prive">Prive</option>
+                <option value="gedeeld">Gedeeld</option>
+                <option value="niet aanwezig">Niet aanwezig</option>
+                </select>
+
+                <label>Bemeubeld</label>
+                <select class="browser-default bemeubeld">
+                <option value="" disabled selected>Choose your option</option>
+                <option value="ja">ja</option>
+                <option value="nee">nee</option>
+                </select>
+                <input type="file" value="upload" name="image" id="image">
+                <progress value="0" max="100" id="uploader">0%</progress>
+            <label>Info</label>
+            <textarea class="info"></textarea>
+
+        </form>
+        <a class="waves-effect waves-light btn addkotbtn" id="addkotbtn">Add Kot</a>
+        <div class="myaddedkoten" id="myaddedkoten"></div>
+ </div>
+    </div>
+{{> footer}}
