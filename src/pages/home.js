@@ -37,10 +37,12 @@ function getUser(){
             console.log(gebruikersnaam);
             console.log(gebruikerstype);
             makemenu()
+            getRecKot();
             return
   }else{
     console.log('not')
     makemenu()
+    getRecKot();
   }
 })
     
@@ -88,7 +90,7 @@ function getRecKot(){
     const url = 'https://datatank.stad.gent/4/wonen/kotatgent.json';
     const url2 = 'https://api.unsplash.com/search/collections?page=1&query=house';
     
-    let koten = [];
+    let koten = "";
     let allKoten;
     let i = 0;
     fetch(url).then(response => {
@@ -101,9 +103,7 @@ function getRecKot(){
         allKoten = data;
         //console.log(data.{{first & name}});
         data.forEach(kot => {
-          if(i < 3){
-
-          
+          if(i < 3){     
             const { Naam , Huisummer , Plaats , Waarborg , Type , Aangemaakt, Straat, Huurprijs } = kot
             //console.log(i);
             koten +=
@@ -128,11 +128,12 @@ function getRecKot(){
                 
                 
             </div>`;
-            console.log(koten);
-            document.getElementById('recKots').innerHTML = koten;
+            
+            
             i ++;
           }else{
-            return;
+            console.log(koten);
+            document.getElementById('recKots').innerHTML = koten;
           }
         });
         
@@ -143,8 +144,10 @@ function getRecKot(){
 }
 export default () => {
   // Data to be passed to the template
+    update(compile(homeTemplate)());
   getUser();
-  update(compile(homeTemplate)());
+
+
 
 
 
@@ -178,5 +181,5 @@ export default () => {
     logoutUser();
     console.log('logout');
   })
-  getRecKot();
+  
 };

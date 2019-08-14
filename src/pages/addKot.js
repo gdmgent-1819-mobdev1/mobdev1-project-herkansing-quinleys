@@ -12,7 +12,7 @@ const firebase = getInstance();
 let userId;
 let user;
 let usertext;
-
+let loguserType;
 function addKot(){
     let name = document.querySelector('.name');
     let huurprijs = document.querySelector('.huurprijs');
@@ -71,8 +71,14 @@ function checkuser(){
         let userid = user.uid;
         firebase.database().ref('/users').once('value').then(function(snapshots){
             snapshots.forEach(function(snapshot){
-                if(snapshot.val().id == userid && snapshot.val().type === 'Kotbaas'){
+                if(snapshot.val().id == userId && snapshot.val().type === 'Kotbaas'){
                     loguserType = snapshot.val().type;
+                    usertext = "";
+                    document.getElementById('usertext').innerHTML = usertext; 
+                    let form = document.querySelector('.create');
+                    form.style.display = "block";
+                    let addkotbtn = document.querySelector('.addkotbtn');
+                    addkotbtn.style.display = "block";
                 }else{
                     usertext ="";
                     console.log('need to be a kotbaas');

@@ -15,6 +15,8 @@ import AddKotView from './pages/addKot';
 import ChatView from './pages/chat';
 import ChatoverviewView from './pages/chatoverview';
 import EditKotView from './pages/editkot';
+import TermsView from './pages/terms';
+import PrivacyView from './pages/privacy';
 
 export default [
   { path: '/', view: HomeView },
@@ -33,4 +35,6 @@ export default [
   { path: '/detail/:id/edit', view: EditKotView },
   { path: '/chat/:id', view: ChatView },
   { path: '/chat', view: ChatoverviewView },
+  { path: '/terms', view: TermsView },
+  { path: '/privacy', view: PrivacyView },
 ];
