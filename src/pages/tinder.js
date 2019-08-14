@@ -10,7 +10,7 @@ const { getInstance } = require('../firebase/firebase');
 const firebase = getInstance();
 
 let tinderDate;
-
+let loguserType;
 let userId;
 
 function tinder(){
@@ -61,8 +61,34 @@ function tinder(){
 function checkUser(){
     firebase.auth().onAuthStateChanged(function(user){
         if(user){
-            let start = document.querySelector('.start');
-            start.style.display ='block';
+            let userid = user.uid
+            firebase.database().ref('/users').once('value').then(function(snapshots){
+                snapshots.forEach(function(snapshot){
+                    if(snapshot.val().id == userId && snapshot.val().type === "Student"){
+                        console.log(snapshot.val().type)
+                        loguserType = snapshot.val().type;
+                        let start = document.querySelector('.start');
+                        start.style.display = "inline-block"
+                        let koten = "";
+                        document.getElementById('koten').innerHTML = koten; 
+                        return
+                    }else{
+
+                        let start = document.querySelector('.start');
+                        start.style.display ='none';
+                        console.log('not a student')
+                        let koten = "";
+                        koten +=
+                        `
+                        <div>
+                        <p>Je moet een student zijn om deze feature te kunnen gebruiken</p>
+                        </div>
+                        `
+                        document.getElementById('koten').innerHTML = koten; 
+                        console.log(koten);
+                    }
+                })
+            })
         }else{
             let start = document.querySelector('.start');
             start.style.display ='none';

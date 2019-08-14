@@ -1,6 +1,8 @@
 
     <div class="body">
+<div class="container">
         <h1>Add Kot</h1>
+        <div id="usertext"></div>
         <form class="create">
             <label>Naam</label>
             <input type="text" class="name">
@@ -72,14 +74,13 @@
                 <option value="ja">ja</option>
                 <option value="nee">nee</option>
                 </select>
-                <input type="file" value="upload" name="image" id="image">
-                <progress value="0" max="100" id="uploader">0%</progress>
             <label>Info</label>
             <textarea class="info"></textarea>
 
         </form>
         <a class="waves-effect waves-light btn addkotbtn" id="addkotbtn">Add Kot</a>
         <div class="myaddedkoten" id="myaddedkoten"></div>
+ </div>
  </div>
     </div>
 {{> footer}}

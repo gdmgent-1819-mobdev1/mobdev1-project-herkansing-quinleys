@@ -36,9 +36,11 @@ function getUser(){
             gebruikerstype = snapshot.val().type;
             console.log(gebruikersnaam);
             console.log(gebruikerstype);
+            makemenu()
             return
   }else{
     console.log('not')
+    makemenu()
   }
 })
     
@@ -48,7 +50,39 @@ function getUser(){
 }
   })
 }
-
+function makemenu(){
+  let user;
+  let email;
+  const loggedInLinks = document.querySelectorAll('.logged-in');
+  const loggedOutLinks = document.querySelectorAll('.logged-out');
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      document.getElementById('username').innerHTML = gebruikersnaam;
+      document.getElementById('useremail').innerHTML = user.email;
+      loggedInLinks.forEach(item => item.style.display = "block");
+      loggedOutLinks.forEach(item => item.style.display = "none");
+      email = user.email;
+      update(compile(homeTemplate)({ email }));
+      console.log(user);
+    if(gebruikerstype === 'Kotbaas'){
+      console.log('inside kotbaas');
+      document.getElementById('addkot').style.display = "block";
+      document.getElementById('addkot1').style.display = "block";
+      document.getElementById('tinder').style.display = "none";
+    }else {
+      document.getElementById('addkot').style.display = "none";
+      document.getElementById('addkot1').style.display = "none";
+      document.getElementById('tinder').style.display = "block";
+    }
+    } else {
+      email = 'visitor';
+      loggedInLinks.forEach(item => item.style.display = "none");
+      loggedOutLinks.forEach(item => item.style.display = "block");
+      update(compile(homeTemplate)({ email }));
+      console.log('no login')
+    }
+  });
+}
 function getRecKot(){
     // Return the compiled template to the router
     const url = 'https://datatank.stad.gent/4/wonen/kotatgent.json';
@@ -112,32 +146,7 @@ export default () => {
   getUser();
   update(compile(homeTemplate)());
 
-  let user;
-  let email;
-  const loggedInLinks = document.querySelectorAll('.logged-in');
-  const loggedOutLinks = document.querySelectorAll('.logged-out');
-  firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-      document.getElementById('username').innerHTML = user.username;
-      document.getElementById('useremail').innerHTML = user.email;
-      loggedInLinks.forEach(item => item.style.display = "block");
-      loggedOutLinks.forEach(item => item.style.display = "none");
-      email = user.email;
-      update(compile(homeTemplate)({ email }));
-      console.log(user);
-    if(gebruikerstype === 'Kotbaas'){
-      document.getElementById('addkot').style.display = "block";
-    }else {
-      document.getElementById('addkot').style.display = "none";
-    }
-    } else {
-      email = 'visitor';
-      loggedInLinks.forEach(item => item.style.display = "none");
-      loggedOutLinks.forEach(item => item.style.display = "block");
-      update(compile(homeTemplate)({ email }));
-      console.log('no login')
-    }
-  });
+
 
       document.addEventListener('DOMContentLoaded', function() {
           console.log('test')

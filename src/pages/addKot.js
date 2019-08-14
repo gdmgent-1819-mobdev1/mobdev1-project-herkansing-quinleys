@@ -11,6 +11,7 @@ const { getInstance } = require('../firebase/firebase');
 const firebase = getInstance();
 let userId;
 let user;
+let usertext;
 
 function addKot(){
     let name = document.querySelector('.name');
@@ -29,36 +30,10 @@ function addKot(){
     let bad = document.querySelector('.bad');
     let keuken = document.querySelector('.keuken');
     let bemeubeld = document.querySelector('.bemeubeld');
-    const fileUpload = document.getElementById('image');
-    const uploader = document.getElementById('uploader');
-    
-    let imglink = "";
+
      user = firebase.auth().currentUser;
      console.log(user)
      if(user){
-        fileUpload.addEventListener('change', (e) => {
-            if (fileUpload.value !== '') {
-              const file = e.target.files[0];
-              const storageRef = firebase.storage().ref('images/' + file.name);
-        
-              storageRef.put(file);
-              imglink = file.name;
-
-              task.on('state_changed',
-                function progress(snapshot){
-                    var percentage = (snapshot.bytesTransferred / snapshot.totalBytes ) * 100;
-                    uploader.value = percentage;
-                },
-                function error (err){
-
-                },
-                function complete(){
-
-                }
-              
-              );
-            }
-          });
          console.log('inside if')
             userId = user.uid;
             console.log(userId);
@@ -82,7 +57,6 @@ function addKot(){
                 bad: bad.value,
                 keuken: keuken.value,
                 bemeubeld: bemeubeld.value,
-                imglink: imglink
             });
             console.log('done')
     }else 
@@ -91,7 +65,47 @@ function addKot(){
     }
 
 }
-
+function checkuser(){
+    let user = firebase.auth().currentUser;
+    if(user){
+        let userid = user.uid;
+        firebase.database().ref('/users').once('value').then(function(snapshots){
+            snapshots.forEach(function(snapshot){
+                if(snapshot.val().id == userid && snapshot.val().type === 'Kotbaas'){
+                    loguserType = snapshot.val().type;
+                }else{
+                    usertext ="";
+                    console.log('need to be a kotbaas');
+                    usertext += 
+                    `
+                    <div>
+                    <p>Je moet een kotbaas zijn om gebruik te maken van deze functie</p>
+                    </div>
+                    `
+                    document.getElementById('usertext').innerHTML = usertext; 
+                    let form = document.querySelector('.create');
+                    form.style.display = "none";
+                    let addkotbtn = document.querySelector('.addkotbtn');
+                    addkotbtn.style.display = "none";
+                }
+            })
+        })
+    }else{
+        console.log('you need to login');
+        usertext ="";
+        usertext += 
+        `
+        <div>
+        <p>Je moet ingelogd zijn voor deze functie</p>
+        </div>
+        `
+        document.getElementById('usertext').innerHTML = usertext; 
+        let form = document.querySelector('.create');
+        form.style.display = "none";
+        let addkotbtn = document.querySelector('.addkotbtn');
+        addkotbtn.style.display = "none";
+    }
+}
 function myAddedKoten(){
     let addedKoten;
     let myaddedkoten;
@@ -125,9 +139,7 @@ function myAddedKoten(){
 
 export default() => {
     update(compile(addKotTemplate)());
-
-    myAddedKoten();
-
+    checkuser();
     update(compile(addKotTemplate)());
 
     let addkotbtn = document.getElementById('addkotbtn');
